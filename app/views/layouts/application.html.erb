@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+     <div class="header">
+     <% if current_user %>
+     	Connecté en tant que
+     	<%= current_user.email %>
+
+<%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+
+     <%else%>
+     	<%= link_to "Signin", new_user_session_path %>
+     <%end%>
+
+     </div>
 
 <%= yield %>
 
